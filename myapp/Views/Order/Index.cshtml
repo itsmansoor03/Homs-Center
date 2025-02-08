@@ -1,0 +1,82 @@
+﻿@model List<myapp.Models.OrderItem>
+@{
+    var order = ViewBag.Order as myapp.Models.Order;
+}
+@{
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Your Order</h1>
+    <hr />
+
+    @if (order == null)
+    {
+        <div class="alert alert-info text-center">
+            @ViewBag.Message
+        </div>
+    }
+    else
+    {
+        <div>
+            <h4>Order Details</h4>
+            <p><strong>Order ID:</strong> @order.Id</p>
+            <p><strong>Date Placed:</strong> @order.OrderPlaced</p>
+            <p><strong>Status:</strong> @order.OrderStatus</p>
+            <p><strong>Total Amount:</strong> $@order.TotalAmount</p>
+        </div>
+
+        <hr />
+
+        <h4>Order Items</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+              
+                    <th>Product Name</th>
+                
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    
+                    <tr>
+                        
+                        <td> @(item.Product != null ? item.Product.Name : "Product not found")</td>
+                        <td>$@item.UnitPrice</td>
+                        <td>@item.Quantity</td>
+                        <td>$@(item.UnitPrice * item.Quantity)</td>
+                        <td>
+                            <form method="post" asp-action="UpdateOrderItem">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control d-inline" style="width: 80px;" />
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                            </form>
+
+                            <form method="post" asp-action="DeleteOrderItem" style="display:inline;">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+        <form method="post" asp-action="ConfirmOrder" class="mt-4">
+            <button type="submit" class="btn btn-success">Confirm Order</button>
+        </form>
+
+        <form method="post" asp-action="DeleteOrder" class="mt-2">
+            <input type="hidden" name="orderId" value="@order.Id" />
+
+            <button type="submit" class="btn btn-danger">Delete Order</button>
+        </form>
+    
+    }
+</div>

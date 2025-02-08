@@ -1,0 +1,48 @@
+﻿@model List<myapp.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories Dashboard";
+}
+@{
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 600px; /* تعديل الارتفاع حسب الحاجة */
+        object-fit: cover; /* يملأ الصورة المساحة دون التشويه */
+        object-position: center; /* لضبط مركز الصورة */
+    }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center">Categories Dashboard</h1>
+    <p class="text-muted text-center">Explore our clothing categories. Click on a category to view the products.</p>
+    <hr />
+
+    <div class="row mt-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                        <img src="images/categorys/@item.Name .jfif" alt="@item.Name" class="card-img-top">
+                        <a asp-controller="Dashboard" asp-action="Products" asp-route-categoryId="@item.Id" class="btn btn-primary">
+                            View Products
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <div class="alert alert-info text-center mt-4">
+            @ViewBag.Message
+        </div>
+    }
+</div>

@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Homs Center - Home";
+}
+<style>
+    .card-img-top {
+        width: 10%;
+        height: 330px; /* تعديل الارتفاع حسب الحاجة */
+        object-fit: cover; /* يملأ الصورة المساحة دون التشويه */
+        object-position: center; /* لضبط مركز الصورة */
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homs center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">Homs center</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/AdminLogin">AdminLogin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Welcome to Homs center</h1>
+            <p class="lead">Your one-stop shop for all university essentials. From books to supplies, we've got you covered!</p>
+            <a href="/Home/Register" class="btn btn-light btn-lg me-2">Get Started</a>
+            <a href="/Home/Login" class="btn btn-outline-light btn-lg">Login</a>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/50.jfif" alt="University Supplies" class= "card-img-top">
+
+            </div>
+            <div class="col-md-6">
+                <h2>Why Choose Us ?</h2>
+                <p>Homs Center is your destination for stylish and affordable clothing. We offer a curated selection of high-quality garments, from classic essentials to the latest trends, ensuring you always look and feel your best. Our friendly staff is dedicated to providing personalized assistance, helping you find the perfect pieces to express your unique style. With competitive prices, frequent sales, and a commitment to customer satisfaction, Homs Center is the perfect place to discover your next favorite outfit.</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Unique Style & Quality</li>
+                    <li class="list-group-item">Exceptional Customer Service</li>
+                    <li class="list-group-item">Affordable Prices</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Homs center. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
